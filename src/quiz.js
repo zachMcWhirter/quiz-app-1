@@ -28,7 +28,7 @@ const Quiz = () => {
       selectedAnswer ?
     {
       ...prev,
-      score: prev.score + 10,
+      score: prev.score + 5,
       correctAnswers: prev.correctAnswers + 1,
     }
     
@@ -69,65 +69,69 @@ const Quiz = () => {
 
   // Add a 0 to the question number if its less than 10
   const addLeadingZero = (number) => (number > 9 ? number : `0${number}`);
-
+  
   // Restart the quiz
   const refresh = () => window.location.reload(true)
 
   return ( 
-    <div className="quiz-container">
+    <div>
       <h1>Pop Quiz!</h1>
-      {!showResult ? (
-      <div>
+      <div className="quiz-container">
+      <h4>Click the correct answer!</h4>
+        
+        {!showResult ? (
         <div>
-          <span className="active-question-no">
-            {addLeadingZero(activeQuestion + 1)}
-          </span>
-          <span className="total-question">
-            /{addLeadingZero(questions.length)}
-          </span>
+          <div>
+            <span className="active-question-no">
+              {addLeadingZero(activeQuestion + 1)}
+            </span>
+            <span className="total-question">
+              /{addLeadingZero(questions.length)}
+            </span>
+          </div>
+          {/* <h2>{question}</h2> */}
+            <ul>
+              {choices.map((answer, index) => (
+                <li 
+                  onClick={() => onAnswerSelected(answer, index)} 
+                  key={answer}
+                  className={selectedAnswerIndex === index ? 'selected-answer' : null}>
+                  {answer}
+                </li>
+              ))}
+            </ul>
+            <button onClick={onClickNext} disabled={selectedAnswerIndex === null}>
+            {/* In case of last question change button title to Finish from Next */}
+              {activeQuestion === questions.length - 1 ? 'Finish' : 'Next'}
+            </button>
         </div>
-        {/* <h2>{question}</h2> */}
-          <ul>
-            {choices.map((answer, index) => (
-              <li 
-                onClick={() => onAnswerSelected(answer, index)} 
-                key={answer}
-                className={selectedAnswerIndex === index ? 'selected-answer' : null}>
-                {answer}
-              </li>
-            ))}
-          </ul>
-          <button onClick={onClickNext} disabled={selectedAnswerIndex === null}>
-          {/* In case of last question change button title to Finish from Next */}
-            {activeQuestion === questions.length - 1 ? 'Finish' : 'Next'}
-          </button>
+        ) : (
+          <div className="result">
+            <h3>Result</h3>
+            <p>
+              Total Questions: <span>{questions.length}</span>
+            </p>
+            <p>
+              Correct Answers:<span> {result.correctAnswers}</span>
+            </p>
+            <p>
+              Wrong Answers:<span> {result.wrongAnswers}</span>
+            </p>
+            <p>
+              Total Score:<span> {result.score}</span>
+            </p>
+            <p>
+              Words Spelled Incorrectly:<span> 
+                {incorrectAnswerList.map((x) => (
+                <li>
+                  {x}
+                </li>
+              ))}</span>
+            </p>
+            <button onClick={refresh}>Try Again</button>
+          </div>
+        )}
       </div>
-      ) : (
-        <div className="result">
-          <h3>Result</h3>
-          <p>
-            Total Questions: <span>{questions.length}</span>
-          </p>
-          <p>
-            Correct Answers:<span> {result.correctAnswers}</span>
-          </p>
-          <p>
-            Wrong Answers:<span> {result.wrongAnswers}</span>
-          </p>
-          <p>
-            Total Score:<span> {result.score}</span>
-          </p>
-          <p>
-            Words Spelled Incorrectly:<span> 
-              {incorrectAnswerList.map((x) => (
-              <li>
-                {x}
-              </li>
-            ))}</span>
-          </p>
-          <button onClick={refresh}>Try Again</button>
-        </div>
-      )}
     </div>
   )
 }

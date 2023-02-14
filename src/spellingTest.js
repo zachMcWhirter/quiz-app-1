@@ -1,8 +1,8 @@
 export const quiz = {
   topic: 'Javascript',
   level: 'Beginner',
-  totalQuestions: 10,
-  perQuestionScore: 10,
+  totalQuestions: 20,
+  perQuestionScore: 5,
   questions: [
     {
       question: 'Number 1',
@@ -113,13 +113,13 @@ export const quiz = {
       correctAnswer: 'empty',
     },
     {
-      question: 'Number 9',
+      question: 'Number 19',
       choices: ['injury', 'injure', 'injurry'],
       type: 'MCQs',
       correctAnswer: 'injury',
     },
     {
-      question: 'Number 10',
+      question: 'Number 20',
       choices: ['prayrie', 'prairey', 'prairie'],
       type: 'MCQs',
       correctAnswer: 'prairie',

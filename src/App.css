@@ -15,8 +15,8 @@ body {
   min-width: 250px;
   background: #ffffff;
   border-radius: 4px;
-  margin-top: 100px;
-  padding: 30px 60px;
+  margin-top: 20px;
+  padding: 40px 60px;
 }
 
 .quiz-container .active-question-no {
@@ -41,6 +41,12 @@ body {
 .quiz-container h2 {
   font-size: 20px;
   font-weight: 500;
+  margin: 0;
+}
+
+.quiz-container h4 {
+  font-size: 18px;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -105,4 +111,52 @@ body {
 .result p span {
   color: #b10000;
   font-size: 22px;
+}
+
+select, input {
+  background: linear-gradient(90.04deg, #ffa200 0.03%, #ff9f4bd4 99.96%);
+  border-radius: 9px;
+  font-size: 18px;
+  color: #747577;
+  padding: 10px 42px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+option {
+  background:#000f80;
+  border-radius: 9px;
+  font-size: 18px;
+  color: #9fa3a9;
+  padding: 10px 42px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.modal {
+  background:white;
+  border-radius: 9px;
+  font-size: 18px;
+  color: blue;
+  outline: none;
+  border: none;
+  max-width: 500px;
+  min-width: 250px;
+}
+
+.modal button{
+  background: linear-gradient(90.04deg, #ffa200 0.03%, #ff9f4bd4 99.96%);
+  border-radius: 9px;
+  font-size: 18px;
+  color: blue;
+  padding: 10px 42px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  
 }
